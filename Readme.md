@@ -1,6 +1,6 @@
-# My Reactive and imperative spring boot Application
+# My Reactive and imperative Spring Boot Application
 
-## Using both dependency **web and webfluck** but from application.yml override default web application type.
+## Using both dependency **web and web flux** but from application.yml override default web application type.
 ```yml
 spring:
   application:
@@ -9,15 +9,15 @@ spring:
     web-application-type: reactive
 ```
 
-## Enable log without restarting application
-### Get Log level from base package
+## Enable log without restarting the application
+### Get the Log level from the base package
 ![Initial log level](Images/Log%20at%20debug%20level.JPG)
 ```bash
 curl --location 'http://localhost:8080/actuator/loggers/com.abhishek'
 ```
 
 
-### Update Log level in base package
+### Update the Log level in the base package
 ![log at debug level](Images/Log%20at%20debug%20level.JPG)
 ```bash
 curl --location 'http://localhost:8080/actuator/loggers/com.abhishek' \
@@ -41,7 +41,7 @@ Also, have a look at the Spring Cloud documentation.
 
 ## Config needs to change in Admin client side
 #### Define port and server in the client 
-For Sprig boot admin server visit here [Spring boot Admin server](https://github.com/mabhisheksingh/SpringBootAdminServer) 
+For the Spring boot admin server visit here [Spring boot Admin server](https://github.com/mabhisheksingh/SpringBootAdminServer) 
 ```yaml
 server:
   port: 8081
@@ -63,5 +63,5 @@ spring:
     name: WebFluxSpringApplication
 ```
 
-### Not exception handling and testing not implemented yet
+### Not handled any exception handling and testing yet
 
