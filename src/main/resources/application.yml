@@ -1,13 +1,13 @@
 keys:
   plnates:
-    X-RapidAPI-Key: '1ef7713c70mshfdd950e72ee08dfdfdfdjsn30b99e581ea4'
+    X-RapidAPI-Key: '1ef7713c70mshfdd950e72ee08a7p14f736jsn30b99e581ea4'
     X-RapidAPI-Host: "planets-info-by-newbapi.p.rapidapi.com"
   amazon:
-    client-id: amzn1.application-oa2-client.2ee66d0a41a84bd4960286bcdfdfdfc52e9a00
+    client-id: amzn1.application-oa2-client.2ee66d0a41a84bd4960286bcc52e9a00
     client-secret: amzn1.oa2-cs.v1.6aeaa10551d4cb357e5420f97b1a21171a4b6139a336e822f126835da6d5b564
   bing-news:
     X-BingApis-SDK: 'true'
-    X-RapidAPI-Key: '1ef7713c70mshfdd950e72ee08a7p1fdfdfdfwewe4f736jsn30b99e581ea4'
+    X-RapidAPI-Key: '1ef7713c70mshfdd950e72ee08a7p14f736jsn30b99e581ea4'
     X-RapidAPI-Host: 'bing-news-search1.p.rapidapi.com'
 
 spring:
@@ -26,10 +26,11 @@ spring:
       client:
         registration:
           github:
-            clientId: 1e0a51218126aewewe48f9b39
-            clientSecret: ewewe
+            clientId: 1e0a51218126a48f9b39
+            clientSecret: 529b727ab82f39ab521ecbc1acf1a109b46e7e3e
   main:
     web-application-type: reactive
+
 
 management:
   endpoints:
@@ -41,8 +42,9 @@ management:
     loggers:
       enabled: true
 server:
-  port: 8081
+  port: 8080
   address: 127.0.0.1
+
 
 logging:
   file:

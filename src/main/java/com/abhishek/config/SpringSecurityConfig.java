@@ -39,7 +39,7 @@ public class SpringSecurityConfig {
 		 * // .permitAll() .anyRequest().authenticated());
 		 */
 
-		http.authorizeExchange(exchange -> exchange.pathMatchers("/api/v1/test**", "/actuator/**")
+		http.authorizeExchange(exchange -> exchange.pathMatchers("/api/v1/test**/**", "/actuator/**")
 				.permitAll()
 				.anyExchange()
 				.authenticated())
@@ -58,10 +58,10 @@ public class SpringSecurityConfig {
 	@Bean
 	MapReactiveUserDetailsService userDetailsService() {
 		UserDetails admin = User.builder().password(passwordEncoder().encode("admin")).username("admin")
-				.roles("ADMIN").build();
-//		UserDetails user = User.builder().username("admin").password(passwordEncoder().encode("password"))
-//				.roles("ADMIN", "USER").build();
-		return new MapReactiveUserDetailsService( admin);
+				.roles("ADMIN","USER").build();
+		UserDetails user = User.builder().username("user").password(passwordEncoder().encode("user"))
+				.roles( "USER").build();
+		return new MapReactiveUserDetailsService( admin ,user);
 	}
 
 	@Bean

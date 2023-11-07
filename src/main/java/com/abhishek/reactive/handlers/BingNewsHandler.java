@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class BingNewsHandler {
 
-    private static WebClient webClient;//= WebClient.create("https://bing-news-search1.p.rapidapi.com/news");
+    private WebClient webClient;//= WebClient.create("https://bing-news-search1.p.rapidapi.com/news");
 
     @Value("${keys.bing-news.X-BingApis-SDK}")
     private Boolean bingRapidAPI;
@@ -24,10 +24,10 @@ public class BingNewsHandler {
     @Value("${keys.bing-news.X-RapidAPI-Host}")
     private String xRapidHost;
 
-    {
-        webClient = WebClient.builder().baseUrl("https://bing-news-search1.p.rapidapi.com/news")
-                .build();
+    BingNewsHandler(WebClient.Builder webClient){
+        this.webClient = webClient.baseUrl("https://bing-news-search1.p.rapidapi.com/news").build();
     }
+
 
     public Mono<ServerResponse> newsCategory(ServerRequest request) {
         System.out.println("REQ "+request);

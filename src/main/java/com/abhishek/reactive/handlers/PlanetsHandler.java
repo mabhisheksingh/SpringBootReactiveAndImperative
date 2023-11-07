@@ -23,9 +23,13 @@ public class PlanetsHandler {
     @Value("${keys.plnates.X-RapidAPI-Host}")
     private String xRapidHost;
 
-    static {
-        webClient = WebClient.builder().baseUrl("https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets")
-                .build();
+//    static {
+//        webClient = WebClient.builder().baseUrl("https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets")
+//                .build();
+//    }
+
+    PlanetsHandler(WebClient.Builder webClient){
+        this.webClient = webClient.baseUrl("https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets").build();
     }
     public Mono<ServerResponse> getSinglePlanets(ServerRequest request) {
         String id = request.pathVariable("id");
