@@ -29,7 +29,16 @@ spring:
             clientId: 1e0a51218126a48f9b39
             clientSecret: 529b727ab82f39ab521ecbc1acf1a109b46e7e3e
   main:
-    web-application-type: reactive
+    web-application-type: REACTIVE
+  # mvc:
+  #   throw-exception-if-no-handler-found: true
+  output:
+    ansi:
+      enabled: always
+#  web:
+#    resources:
+#      add-mappings: false
+
 
 
 management:
@@ -52,7 +61,7 @@ logging:
     path: "C:/Users/abhis/Documents/workspace-spring-tool-suite-4-4.17.0.RELEASE/ReactiveSpringRouter/logs/"
   level:
 #    root: INFO
-    com.abhishek: INFO
+    com.abhishek: DEBUG
     org.springframework.security: INFO #To print the Security log
 #    performance.*: DEBUG
   pattern:

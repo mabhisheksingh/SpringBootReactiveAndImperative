@@ -1,8 +1,11 @@
 package com.abhishek.reactive.handlers;
 
 import com.abhishek.dto.PlanetRouterdto;
-import com.abhishek.model.bingnews.BingNewsDTO;
+import com.abhishek.exceptions.CustomError;
+import com.abhishek.dto.BingNewsDTO;
+import com.abhishek.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -43,8 +46,15 @@ public class BingNewsHandler {
                     return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(news);
 
                 })
-                .onErrorResume( e -> Mono.just(" Error " + e.getMessage())
-                        .flatMap(s -> ServerResponse.ok().contentType(MediaType.TEXT_PLAIN).bodyValue(s)));
+                .onErrorResume(  err ->
+//                        Mono.just(CustomError.builder().errorMessage(e.getMessage()).errorCode(String.valueOf(HttpStatus.NOT_FOUND)).build())
+                        {
+                            System.out.println("Error "+err);
+                            return Mono.error(new ObjectNotFoundException("GHGH "+err.getMessage() ))
+                            .flatMap(s -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(s));
+
+                        }
+                );
     }
 
     public Mono<ServerResponse> newsSearch(ServerRequest request) {

@@ -1,13 +1,12 @@
 package com.abhishek.nonreactive.controller;
 
+import com.abhishek.exceptions.ObjectNotFoundException;
 import com.abhishek.model.Employee;
 import com.abhishek.nonreactive.service.HomeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import reactor.core.publisher.Mono;
 
@@ -35,6 +34,11 @@ public class HomeController implements MainController{
         log.debug(TOTAL_TIME_FOR_EXECUTION,  (float)(end.getNano() -  start.getNano())/1_000_000 );
         return Mono.just("ABHSIHEK SINGH").delayElement(Duration.ofMillis(2000));
     }
+    @GetMapping("/testException")
+    public Mono<String> testException()  {
+
+        return Mono.error(new ObjectNotFoundException("ABHSIHEK SINGH"));
+    }
     @GetMapping("/getAll")
     public Mono<List<Employee>> getAllEmp()  {
         return homeService.getAllEmp();
@@ -44,5 +48,14 @@ public class HomeController implements MainController{
         return homeService.getEmpById(id);
     }
 
+    /**
+     * Catch-all mapping for path not found
+     */
+//    @RequestMapping(value = "/**")
+//    @ResponseBody
+//    public String handlePathNotFound() {
+//        // Handle the "path not found" scenario
+//        return "Path not found";
+//    }
 
 }

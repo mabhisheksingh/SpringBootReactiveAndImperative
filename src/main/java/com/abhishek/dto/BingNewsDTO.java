@@ -1,5 +1,6 @@
-package com.abhishek.model.bingnews;
+package com.abhishek.dto;
 
+import com.abhishek.model.bingnews.BingNews;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
