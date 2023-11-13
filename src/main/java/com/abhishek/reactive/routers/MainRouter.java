@@ -20,10 +20,7 @@ public class MainRouter {
     @Autowired
     private BingNewsRouter bingNewsRouter;
 
-    @Bean
-    public WebProperties.Resources resources(){
-        return new WebProperties.Resources();
-    }
+
 
     @Bean
     public RouterFunction<ServerResponse> mainRouterFunction() {

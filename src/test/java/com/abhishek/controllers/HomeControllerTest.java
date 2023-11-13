@@ -10,9 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -30,10 +33,10 @@ import java.util.List;
  * all beans that is not a good choice for slice testing
  * Prefer to use test-containers because it gives light weight of your required prod db in test environment
  */
-@ExtendWith(SpringExtension.class)
-@WebFluxTest(HomeController.class)
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@AutoConfigureWebTestClient
+//@ExtendWith(SpringExtension.class)
+//@WebFluxTest(HomeController.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureWebTestClient
 @Tag(value = "HomeController")
 public class HomeControllerTest {
     private static final String BASE_PATH = "/api/v1";

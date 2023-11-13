@@ -63,5 +63,6 @@ spring:
     name: WebFluxSpringApplication
 ```
 
-### Not handled any exception handling yet.
+### Implemented Global Exception handling through ControllerAdvice and functional exception handling also.
+### testing and code coverage tool also implemented in this Git commit.
 

@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWe
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -24,6 +26,7 @@ import java.util.Map;
 
 @Component
 @Order(-2)
+//@Configuration
 /**
  * let’s implement the Global Error Handler.
  * For this, Spring provides a convenient AbstractErrorWebExceptionHandler class for
@@ -40,6 +43,12 @@ public class GlobalErrorWebExceptionHandler extends AbstractErrorWebExceptionHan
      * @param applicationContext the application context
      * @since 2.4.0
      */
+
+//    @Bean
+//    public WebProperties.Resources resources(){
+//        return new WebProperties.Resources();
+//    }
+
     public GlobalErrorWebExceptionHandler(ErrorAttributes errorAttributes, WebProperties.Resources resources,
                                           ApplicationContext applicationContext, ServerCodecConfigurer serverCodecConfigurer) {
         super(errorAttributes, resources, applicationContext);
